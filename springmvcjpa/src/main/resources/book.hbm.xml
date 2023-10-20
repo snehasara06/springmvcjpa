@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>    
+<!DOCTYPE hibernate-mapping PUBLIC    
+          "-//Hibernate/Hibernate Mapping DTD 5.4//EN"    
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.4.dtd">    
+
+   <hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.hibernate.org/xsd/orm/hbm
+                                       http://www.hibernate.org/xsd/orm/hbm/hbm-configuration-5.4.xsd"
+                   package="com.kgisl.springmvcjpa">
+
+    <class name="com.kgisl.springmvcjpa.Book" table="book">
+    <id name="bookId">
+    <generator class="increment"></generator>
+    </id>
+    <property name="name"></property>
+
+     <!-- <set name="address" table="employeeaddress" cascade="all">
+            <key column="employeeId" />
+            <one-to-many  class="com.kgisl.hibernatemanytoone.Address"/>
+        </set> -->
+
+    <!-- <many-to-one name="address" cascade="all"></many-to-one> -->
+    <many-to-one name="author" column="author" cascade="all"></many-to-one>
+    <!-- <one-to-one name="address" cascade="all" /> -->
+
+    </class>
+    </hibernate-mapping>

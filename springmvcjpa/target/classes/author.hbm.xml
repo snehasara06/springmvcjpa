@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>    
+<!DOCTYPE hibernate-mapping PUBLIC    
+          "-//Hibernate/Hibernate Mapping DTD 5.4//EN"    
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.4.dtd">    
+   
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/orm/hbm"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.hibernate.org/xsd/orm/hbm
+                                       http://www.hibernate.org/xsd/orm/hbm/hibernate-mapping-5.4.xsd"
+                   package="com.kgisl.springmvcjpa">
+                   
+    <class name="com.kgisl.springmvcjpa.Author" table="author">
+        <id name="authorId" column="authorId">
+            <generator class="increment" />
+        </id>
+
+<!--   private int authorId;
+    private String authorName;
+    private String authorEmail; -->
+       
+        <property name="authorName" column="authorName" />
+        <property name="authorEmail" column="authorEmail" />
+
+        <join table="book_author" inverse="true">
+            <key column="authorId"/>
+            <many-to-one name="books" class="com.kgisl.springmvcjpa.Book" column="bookId" />
+        </join>
+
+        <!-- <many-to-one name="employee" column="employee" cascade="all"></many-to-one> -->
+        <!-- <one-to-one name="employee" cascade="all" /> -->
+    </class>
+</hibernate-mapping>
